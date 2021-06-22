@@ -26,7 +26,7 @@ gitUserInfo ();
 
 const displayUserInfo = function (data) {
     const div = document.createElement("div");
-    div.classList.add(".user-info");
+    div.classList.add("user-info");
     div.innerHTML = `
         <figure>
             <img alt="user avatar" src=${data.avatar_url} />
@@ -54,7 +54,7 @@ const displayRepos = function (repos) {
     filterInput.classList.remove("hide");
     for (const repo of repos) {
         let repoItem = document.createElement("li");
-        repoItem.classList.add(".repo");
+        repoItem.classList.add("repo");
         repoItem.innerHTML = `<h3>${repo.name}</h3>`;
         repoList.append(repoItem);
     }
