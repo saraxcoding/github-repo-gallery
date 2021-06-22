@@ -2,6 +2,8 @@
 const overview = document.querySelector(".overview");
 //displays GitHub username
 const username = "saraxcoding";
+//displays repos list
+const repoList = document.querySelector(".repo-list");
 
 const gitUserInfo = async function () {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);
@@ -9,6 +11,7 @@ const gitUserInfo = async function () {
     console.log(data);
     displayUserInfo(data);
 };
+
 gitUserInfo ();
 
 const displayUserInfo = function (data) {
@@ -28,3 +31,21 @@ const displayUserInfo = function (data) {
     overview.append(div);
 };
 
+const gitRepos = async function () {
+    const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per-page=100`);
+    const repoData = await fetchRepos.json();
+    console.log(repoData);
+    displayRepos(repos);
+};
+//gitRepos ();
+
+const displayRepos = function (repos) {
+    for (const repo of repos) {
+        let reposItem = document.createElement("li");
+        reposItem.classList.add(".repo");
+        reposItem.innerHTML = `
+        <h3>${repoData.name}</h3>
+        `;
+    repoList.append(reposItem);
+    }
+};
