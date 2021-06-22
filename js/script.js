@@ -26,7 +26,7 @@ gitUserInfo ();
 
 const displayUserInfo = function (data) {
     const div = document.createElement("div");
-    div.classList.add(".user-info");
+    div.classList.add("user-info");
     div.innerHTML = `
         <figure>
             <img alt="user avatar" src=${data.avatar_url} />
@@ -54,7 +54,7 @@ const displayRepos = function (repos) {
     filterInput.classList.remove("hide");
     for (const repo of repos) {
         let repoItem = document.createElement("li");
-        repoItem.classList.add(".repo");
+        repoItem.classList.add("repo");
         repoItem.innerHTML = `<h3>${repo.name}</h3>`;
         repoList.append(repoItem);
     }
@@ -114,13 +114,13 @@ button.addEventListener("click", function () {
 //input event - Dynamic search
 filterInput.addEventListener("input", function (e) {
     const searchText = e.target.value;
-    //console.log(userInput);
+    //console.log(searchText);
     const repos = document.querySelectorAll(".repo");
     const searchLowerText = searchText.toLowerCase();
 
     for (const repo of repos) {
-        let reposLowerText = repo.innerText.toLowerCase();
-        if (reposLowerText.includes(searchLowerText)) {
+        const repoLowerText = repo.innerText.toLowerCase();
+        if (repoLowerText.includes(searchLowerText)) {
             repo.classList.remove("hide");
         } else {
             repo.classList.add("hide");
